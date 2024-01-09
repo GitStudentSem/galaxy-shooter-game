@@ -133,7 +133,7 @@ class Scene2 extends Phaser.Scene {
     this.music = this.sound.add("music");
     let musicConfig = {
       mute: false,
-      volume: 1,
+      volume: 0.02,
       rate: 1,
       detune: 0,
       seek: 0,
@@ -162,7 +162,7 @@ class Scene2 extends Phaser.Scene {
   pickPowerUp(player, powerUp) {
     powerUp.disableBody(true, true);
     this.updateLives(1);
-    this.pickupSound.play();
+    this.pickupSound.play({ volume: 0.02 });
   }
 
   updateLives(count) {
@@ -229,7 +229,7 @@ class Scene2 extends Phaser.Scene {
     this.score += enemy.score;
     let scoreFormated = this.zeroPad(this.score);
     this.scoreLabel.text = "SCORE " + scoreFormated;
-    this.explosionSound.play();
+    this.explosionSound.play({ volume: 0.02 });
 
     if (this.level * 1000 > this.score) return;
     else this.updateLevel();
@@ -266,7 +266,7 @@ class Scene2 extends Phaser.Scene {
 
   shootBeam() {
     let beam = new Beam(this);
-    this.beamSound.play();
+    this.beamSound.play({ volume: 0.02 });
   }
 
   movePlayerManager() {
